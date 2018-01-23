@@ -11,7 +11,6 @@ spring:
    
 eureka:
   instance:
-    hostname: localhost
     lease-expiration-duration-in-seconds: 2 
     lease-renewal-interval-in-seconds: 1
   client:
@@ -20,7 +19,7 @@ eureka:
     lease:
       duration: 5
     service-url:
-      defaultZone: http://localhost:1234/eureka/
+      defaultZone: ${vcap.services.eureka.credentials.uri:http://localhost:8761/eureka/}
     
   
    

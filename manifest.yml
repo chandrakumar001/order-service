@@ -1,0 +1,12 @@
+---
+applications:
+ - name: Order-Service
+   memory: 800M
+   instances: 1
+   path: build/libs/Order-Service-0.0.1-SNAPSHOT.jar
+   domain: odertaa-service.cfapps.io
+   services:
+      - hystrx
+      - config-server
+      - eureka
+   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.3
