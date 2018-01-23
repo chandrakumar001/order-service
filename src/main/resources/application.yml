@@ -1,0 +1,26 @@
+server:
+  port: 2222
+  context-path: /order
+  error:
+    whitelabel:
+      enabled: true
+ 
+spring:
+  application:
+    name: order-service
+   
+eureka:
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 2 
+    lease-renewal-interval-in-seconds: 1
+  client:
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+    service-url:
+      defaultZone: http://localhost:1234/eureka/
+    
+  
+   
