@@ -1,7 +1,10 @@
 package com.demo.order.model;
 
+//@Entity
+//@Table(name = "order")
 public class Order {
-	
+//	 @Id
+//	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
 	private String desc;
 	private int Custom_Id;

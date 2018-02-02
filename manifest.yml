@@ -9,3 +9,6 @@ applications:
     - cfapps.io
    services:
     - service-registry
+    - rabbit-mq
+   env:
+     SPRING_PROFILE_ACTIVE: cloud

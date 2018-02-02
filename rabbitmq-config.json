@@ -1,0 +1,112 @@
+{
+  "rabbitmqent": [
+    {
+    "credentials": {
+      "hostname": "rabbitmq.service.consul",
+      "hostnames": [
+       "rabbitmq-node-0.service.consul",
+       "rabbitmq-node-1.service.consul",
+       "rabbitmq-node-2.service.consul"
+      ],
+      "http_api_uri": "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul:15672/api",
+      "http_api_uris": [
+       "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul:15672/api",
+       "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul:15672/api",
+       "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul:15672/api"
+      ],
+      "password": "rvUgjRjnMa6mejiW",
+      "protocols": {
+       "amqp": {
+        "host": "rabbitmq.service.consul",
+        "hosts": [
+         "rabbitmq-node-0.service.consul",
+         "rabbitmq-node-1.service.consul",
+         "rabbitmq-node-2.service.consul"
+        ],
+        "password": "rvUgjRjnMa6mejiW",
+        "port": 5672,
+        "ssl": false,
+        "uri": "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+        "uris": [
+         "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+         "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+         "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264"
+        ],
+        "username": "i0zRgICRqzDB5fll",
+        "vhost": "bd0c989a-8a16-4641-8bcc-70a99c7c7264"
+       },
+       "management": {
+        "host": "rabbitmq.service.consul",
+        "hosts": [
+         "rabbitmq-node-0.service.consul",
+         "rabbitmq-node-1.service.consul",
+         "rabbitmq-node-2.service.consul"
+        ],
+        "password": "rvUgjRjnMa6mejiW",
+        "path": "/api",
+        "port": 15672,
+        "ssl": false,
+        "uri": "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul:15672/api",
+        "uris": [
+         "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul:15672/api",
+         "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul:15672/api",
+         "http://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul:15672/api"
+        ],
+        "username": "i0zRgICRqzDB5fll"
+       },
+       "mqtt": {
+        "host": "rabbitmq.service.consul",
+        "hosts": [
+         "rabbitmq-node-0.service.consul",
+         "rabbitmq-node-1.service.consul",
+         "rabbitmq-node-2.service.consul"
+        ],
+        "password": "rvUgjRjnMa6mejiW",
+        "port": 1883,
+        "ssl": false,
+        "uri": "mqtt://bd0c989a-8a16-4641-8bcc-70a99c7c7264%3Ai0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul",
+        "uris": [
+         "mqtt://bd0c989a-8a16-4641-8bcc-70a99c7c7264%3Ai0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul",
+         "mqtt://bd0c989a-8a16-4641-8bcc-70a99c7c7264%3Ai0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul",
+         "mqtt://bd0c989a-8a16-4641-8bcc-70a99c7c7264%3Ai0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul"
+        ],
+        "username": "bd0c989a-8a16-4641-8bcc-70a99c7c7264:i0zRgICRqzDB5fll"
+       },
+       "stomp": {
+        "host": "rabbitmq.service.consul",
+        "hosts": [
+         "rabbitmq.service.consul",
+         "rabbitmq-node-0.service.consul",
+         "rabbitmq-node-1.service.consul",
+         "rabbitmq-node-2.service.consul"
+        ],
+        "password": "rvUgjRjnMa6mejiW",
+        "port": 61613,
+        "ssl": false,
+        "uri": "stomp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul",
+        "uris": [
+         "stomp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul",
+         "stomp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul",
+         "stomp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul"
+        ],
+        "username": "i0zRgICRqzDB5fll",
+        "vhost": "bd0c989a-8a16-4641-8bcc-70a99c7c7264"
+       }
+      },
+      "ssl": false,
+      "uri": "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+      "uris": [
+       "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-0.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+       "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-1.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264",
+       "amqp://i0zRgICRqzDB5fll:rvUgjRjnMa6mejiW@rabbitmq-node-2.service.consul/bd0c989a-8a16-4641-8bcc-70a99c7c7264"
+      ],
+      "username": "i0zRgICRqzDB5fll",
+      "vhost": "bd0c989a-8a16-4641-8bcc-70a99c7c7264"
+    },
+    "label": "rabbitmqent",
+      "name": "testrabbit",
+      "plan": "usage",
+      "tags": []
+    }
+  ]
+}

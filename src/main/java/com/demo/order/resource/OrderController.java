@@ -2,6 +2,7 @@ package com.demo.order.resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.order.config.RabbitMQdConfig;
 import com.demo.order.model.Order;
 import com.demo.order.service.OrderService;
 
@@ -28,6 +30,17 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 
+	@Autowired
+	private RabbitMQdConfig global;
+	//	@Autowired
+	//	RabbitMQSender rabbitMQSender;
+
+
+//	@Autowired
+//	private RabbitTemplate rabbitTemplate;
+
+
+
 
 	@ApiOperation(value = "View a list of available products", response = Iterable.class)
 	@ApiResponses(value = {
@@ -39,8 +52,10 @@ public class OrderController {
 
 	@GetMapping("/orders")
 	public ResponseEntity<?>  getCustomers() {
-		LOGGER.info("calling getCustomers() method...");
 
+		String globalProperties = global.getUrl();
+
+		LOGGER.info("calling getCustomers() method...-------"+globalProperties);
 		if(LOGGER.isDebugEnabled()) {
 			LOGGER.debug("calling getCustomers() method..."+orderService.toString());
 		}
@@ -59,7 +74,11 @@ public class OrderController {
 
 	@GetMapping("/orders/{id}")
 	public ResponseEntity<?>  getCustomer(@RequestHeader String jwt, @PathVariable("id") int id) {
+
 		LOGGER.info("calling getCustomer() method..."+id);
+
+
+
 		Order cs=orderService.getOrder(id);
 		if(null==cs) {
 			new ResponseEntity<>(new Order(), HttpStatus.OK);
@@ -70,6 +89,8 @@ public class OrderController {
 	@PostMapping("/orders/create")
 	public ResponseEntity<?>  getCustomer(@RequestBody Order customer) {
 		LOGGER.info("calling getCustomer() method..."+customer);
+
+		//rabbitTemplate.convertAndSend("one",customer);
 
 		Order customerResp = orderService.getOrder(customer);
 		return new ResponseEntity<>(customerResp, HttpStatus.CREATED);
