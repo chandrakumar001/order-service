@@ -32,7 +32,4 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> getOrder() {
 		return orders;
 	}
-
-
-
 }

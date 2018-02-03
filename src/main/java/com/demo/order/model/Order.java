@@ -1,33 +1,30 @@
 package com.demo.order.model;
 
-//@Entity
-//@Table(name = "order")
 public class Order {
-//	 @Id
-//	 @GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int orderId;
 	private String desc;
-	private int Custom_Id;
-	
+	private String orderName;
+	private int custom_Id;
 	
 	public Order() {
 		super();
 	}
 
-	public Order(int orderId, String desc, int custom_Id) {
+	public Order(int orderId, String desc, String orderName, int custom_Id) {
 		super();
 		this.orderId = orderId;
 		this.desc = desc;
-		Custom_Id = custom_Id;
+		this.orderName = orderName;
+		this.custom_Id = custom_Id;
 	}
 
-
 	public int getCustom_Id() {
-		return Custom_Id;
+		return custom_Id;
 	}
 
 	public void setCustom_Id(int custom_Id) {
-		Custom_Id = custom_Id;
+		this.custom_Id = custom_Id;
 	}
 
 	public int getOrderId() {
@@ -43,9 +40,19 @@ public class Order {
 		this.desc = desc;
 	}
 
+	
+	public String getOrderName() {
+		return orderName;
+	}
+
+	public void setOrderName(String orderName) {
+		this.orderName = orderName;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", desc=" + desc + ", Custom_Id=" + Custom_Id + "]";
+		return "Order [orderId=" + orderId + ", desc=" + desc + ", orderName=" + orderName + ", custom_Id=" + custom_Id
+				+ "]";
 	}
 	
 }

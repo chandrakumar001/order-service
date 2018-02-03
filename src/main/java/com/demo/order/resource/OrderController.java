@@ -2,7 +2,6 @@ package com.demo.order.resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,25 +21,20 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@Api(value="customerservice", description="Operations pertaining for customer service")
+@Api(value="Orderservice", description="Operations pertaining for order service")
 @RestController
 public class OrderController {
 
 	private static Logger LOGGER=LoggerFactory.getLogger(OrderController.class);
-	@Autowired
+	
 	private OrderService orderService;
-
-	@Autowired
 	private RabbitMQdConfig global;
-	//	@Autowired
-	//	RabbitMQSender rabbitMQSender;
-
-
-//	@Autowired
-//	private RabbitTemplate rabbitTemplate;
-
-
-
+	
+	@Autowired
+	OrderController(OrderService orderService,RabbitMQdConfig global){
+		this.orderService=orderService;
+		this.global=global;
+	}
 
 	@ApiOperation(value = "View a list of available products", response = Iterable.class)
 	@ApiResponses(value = {
@@ -86,11 +80,9 @@ public class OrderController {
 		return new ResponseEntity<>(cs, HttpStatus.OK);
 	}
 
-	@PostMapping("/orders/create")
-	public ResponseEntity<?>  getCustomer(@RequestBody Order customer) {
+	@PostMapping("/orders")
+	public ResponseEntity<?>  createCustomer(@RequestBody Order customer) {
 		LOGGER.info("calling getCustomer() method..."+customer);
-
-		//rabbitTemplate.convertAndSend("one",customer);
 
 		Order customerResp = orderService.getOrder(customer);
 		return new ResponseEntity<>(customerResp, HttpStatus.CREATED);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @PropertySource("classpath:application.yml")
 public class RabbitMQdConfig {
 
-    @Value("${rabbit.connectionuri}")
+    @Value("${rabbit.connection-url}")
     private String  url;
 
 	public String getUrl() {
@@ -21,6 +21,6 @@ public class RabbitMQdConfig {
 
 	@Override
 	public String toString() {
-		return "GlobalProperties [uri=" + url + "]";
+		return "RabbitMQdConfig [url=" + url + "]";
 	}
 }
