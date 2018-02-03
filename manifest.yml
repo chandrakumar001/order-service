@@ -2,7 +2,7 @@
 applications:
  - name: order-service
    memory: 800M
-   host: non-demo-order-service
+   host: demo-nonprod-order-service
    instances: 1
    path: build/libs/order-service-0.0.1-SNAPSHOT.jar
    domains:
