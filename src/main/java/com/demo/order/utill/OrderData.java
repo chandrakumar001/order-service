@@ -11,7 +11,7 @@ import com.demo.order.model.Order;
 @RefreshScope
 public class OrderData {
 	
-	@Value("${orderName:Hello world - Config Server is not working..pelase check}")
+	@Value("${orderName: Hello world - Config Server is not working..pelase check}")
 	private static String orderName;
 	
 	public static List<Order> getOrders(){
