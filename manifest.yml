@@ -5,8 +5,6 @@ applications:
    host: demo-nonprod-order-service
    instances: 1
    path: build/libs/order-service-0.0.1-SNAPSHOT.jar
-   domains:
-    - cfapps.io
    services:
     - service-registry
     - rabbit-mq
