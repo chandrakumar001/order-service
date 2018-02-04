@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@Api(value="Orderservice", description="Operations pertaining for order service")
+@Api(value="Order-service", description="Operations pertaining for order service")
 @RestController
 public class OrderController {
 
@@ -36,7 +36,7 @@ public class OrderController {
 		this.global=global;
 	}
 
-	@ApiOperation(value = "View a list of available products", response = Iterable.class)
+	@ApiOperation(value = "View a list of available orders")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -45,7 +45,7 @@ public class OrderController {
 	})
 
 	@GetMapping("/orders")
-	public ResponseEntity<?>  getCustomers() {
+	public ResponseEntity<?>  getOrders() {
 
 		String globalProperties = global.getUrl();
 
@@ -67,7 +67,7 @@ public class OrderController {
 	})
 
 	@GetMapping("/orders/{id}")
-	public ResponseEntity<?>  getCustomer(@RequestHeader String jwt, @PathVariable("id") int id) {
+	public ResponseEntity<?>  getOrder(@RequestHeader String jwt, @PathVariable("id") int id) {
 
 		LOGGER.info("calling getCustomer() method..."+id);
 
@@ -81,7 +81,7 @@ public class OrderController {
 	}
 
 	@PostMapping("/orders")
-	public ResponseEntity<?>  createCustomer(@RequestBody Order customer) {
+	public ResponseEntity<?>  createOrder(@RequestBody Order customer) {
 		LOGGER.info("calling getCustomer() method..."+customer);
 
 		Order customerResp = orderService.getOrder(customer);

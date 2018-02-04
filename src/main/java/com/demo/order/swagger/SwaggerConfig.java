@@ -1,4 +1,4 @@
-package com.example.demo.swagger;
+package com.demo.order.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
