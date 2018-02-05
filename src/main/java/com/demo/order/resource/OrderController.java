@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.order.config.RabbitMQdConfig;
+import com.demo.order.config.RabbitMQConsumer;
 import com.demo.order.model.Order;
 import com.demo.order.service.OrderService;
 
@@ -28,12 +29,12 @@ public class OrderController {
 	private static Logger LOGGER=LoggerFactory.getLogger(OrderController.class);
 	
 	private OrderService orderService;
-	private RabbitMQdConfig global;
-	
+	RabbitMQConsumer rabbitMQConsumer;
+
 	@Autowired
-	OrderController(OrderService orderService,RabbitMQdConfig global){
+	OrderController(OrderService orderService,RabbitMQConsumer rabbitMQConsumer){
 		this.orderService=orderService;
-		this.global=global;
+		this.rabbitMQConsumer=rabbitMQConsumer;
 	}
 
 	@ApiOperation(value = "View a list of available orders")
@@ -47,9 +48,9 @@ public class OrderController {
 	@GetMapping("/orders")
 	public ResponseEntity<?>  getOrders() {
 
-		String globalProperties = global.getUrl();
+		//String globalProperties = global.getUrl();
 
-		LOGGER.info("calling getCustomers() method...-------"+globalProperties);
+		//LOGGER.info("calling getCustomers() method...-------"+globalProperties);
 		if(LOGGER.isDebugEnabled()) {
 			LOGGER.debug("calling getCustomers() method..."+orderService.toString());
 		}
@@ -81,11 +82,29 @@ public class OrderController {
 	}
 
 	@PostMapping("/orders")
-	public ResponseEntity<?>  createOrder(@RequestBody Order customer) {
-		LOGGER.info("calling getCustomer() method..."+customer);
+	public ResponseEntity<?>  createOrder(@RequestBody Order order) {
+		LOGGER.info("calling getCustomer() method..."+order);
 
-		Order customerResp = orderService.getOrder(customer);
+		Order customerResp = orderService.getOrder(order);
 		return new ResponseEntity<>(customerResp, HttpStatus.CREATED);
 	}
+	@PostMapping("/orderbypassing")
+	public ResponseEntity<?>  createOrderPassingArgs(@RequestParam("orderId") int orderId,@RequestParam("custom_Id") int custom_Id,
+			@RequestParam("desc") String desc,@RequestParam("orderName") String orderName
+			) {
+		Order order=new Order();
+		order.setCustom_Id(custom_Id);
+		order.setDesc(desc);
+		order.setOrderId(orderId);
+		order.setOrderName(orderName);
+		LOGGER.info("calling getCustomer() method..."+order);
 
+		 orderService.send(order);
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
+	}
+//	@GetMapping("/orderbypassingRecived")
+//	public String returnData() {
+//		return rabbitMQConsumer.recievedMessage("");
+//	}
+	
 }

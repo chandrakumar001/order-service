@@ -9,4 +9,5 @@ public interface OrderService {
 	public 	List<Order> getOrder();
 	public 	Order getOrder(int id);
 	public 	Order getOrder(Order customer);
+	public void send(Order Order);
 }

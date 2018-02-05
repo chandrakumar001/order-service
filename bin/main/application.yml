@@ -1,7 +1,16 @@
 spring:
   application:
     name: order-service
-    
+  rabbitmq:
+    host: mosquito-01.rmq.cloudamqp.com
+    username: fufuyotz
+    password: vQTYy7Bcm_vuIugYdClr-YWuiqRm4L_9
+
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+
 server:
   port: 2222
   context-path: /order-service
@@ -24,21 +33,15 @@ eureka:
   client:
     service-url:
       defaultZone: ${vcap.services.eureka.credentials.uri:http://localhost:8761/eureka/}
-   
-rabbit:
-  connection-url: ${vcap.services.rabbit-mq.credentials.uri:localRabbit}
- 
+     # defaultZone: http://localhost:8761/eureka/
+      
 
-  
-  
-  
+demoone:
+  rabbitmq:
+      exchange: demo.exchange
+      queue: demo.queue
+      routingkey: demo.routingkey
+      
+#rabbit:
+#  connection-url: ${vcap.services.rabbit-mq.credentials.uri:localRabbit}
 
-
-    
-
-
-  
-   
-
-
- 

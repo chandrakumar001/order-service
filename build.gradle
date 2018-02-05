@@ -25,6 +25,7 @@ repositories {
 
 dependencies {
 	compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
+	//compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
 	
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 	compile('org.springframework.cloud:spring-cloud-starter-feign')
@@ -32,10 +33,11 @@ dependencies {
 	//compile('org.springframework.cloud:spring-cloud-spring-service-connector')
 	//compile('org.springframework.cloud:spring-cloud-cloudfoundry-connector')
 
-	
+
+	//compile('org.springframework.amqp:spring-rabbit:1.2.0.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	//compile ('org.springframework.boot:spring-boot-starter-amqp')
+	compile ('org.springframework.boot:spring-boot-starter-amqp')
 	//compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	//compile('org.mariadb.jdbc:org.mariadb.jdbc')
