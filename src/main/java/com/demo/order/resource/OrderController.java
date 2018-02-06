@@ -1,6 +1,7 @@
 package com.demo.order.resource;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.order.config.RabbitMQConsumer;
 import com.demo.order.model.Order;
 import com.demo.order.service.OrderService;
 
@@ -29,12 +29,12 @@ public class OrderController {
 	private static Logger LOGGER=LoggerFactory.getLogger(OrderController.class);
 	
 	private OrderService orderService;
-	RabbitMQConsumer rabbitMQConsumer;
+	//RabbitMQConsumer rabbitMQConsumer;,RabbitMQConsumer rabbitMQConsumer
 
 	@Autowired
-	OrderController(OrderService orderService,RabbitMQConsumer rabbitMQConsumer){
+	OrderController(OrderService orderService){
 		this.orderService=orderService;
-		this.rabbitMQConsumer=rabbitMQConsumer;
+		//this.rabbitMQConsumer=rabbitMQConsumer;
 	}
 
 	@ApiOperation(value = "View a list of available orders")
@@ -100,11 +100,6 @@ public class OrderController {
 		LOGGER.info("calling getCustomer() method..."+order);
 
 		 orderService.send(order);
-		return new ResponseEntity<>(null, HttpStatus.CREATED);
+		return new ResponseEntity<>(order, HttpStatus.CREATED);
 	}
-//	@GetMapping("/orderbypassingRecived")
-//	public String returnData() {
-//		return rabbitMQConsumer.recievedMessage("");
-//	}
-	
 }

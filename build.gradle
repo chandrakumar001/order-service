@@ -41,6 +41,9 @@ dependencies {
 	//compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	//compile('org.mariadb.jdbc:org.mariadb.jdbc')
+
+
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 	
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'

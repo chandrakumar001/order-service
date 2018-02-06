@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.demo.order.model.Order;
+import com.google.gson.Gson;
 
 @Component
 public class RabbitMQSender {
@@ -13,7 +14,7 @@ public class RabbitMQSender {
 	private String routingkey;	
 	private AmqpTemplate amqpTemplate;
 	
-	@Autowired
+	@Autowired(required = true)
 	public RabbitMQSender( AmqpTemplate amqpTemplate,@Value("${demoone.rabbitmq.routingkey}") String routingkey ,@Value("${demoone.rabbitmq.exchange}") String exchange){
 		this.amqpTemplate=amqpTemplate;
 		this.routingkey=routingkey;
@@ -22,7 +23,9 @@ public class RabbitMQSender {
 	
 	
 	public void send(Order company) {
-		amqpTemplate.convertAndSend(exchange, routingkey, company);
-		System.out.println("RabbitMQSender--->"+"routingkey"+routingkey+"exchange"+exchange+"Send msg = " + company);
+		Gson gson=new  Gson();
+		String s=gson.toJson(company);
+		amqpTemplate.convertAndSend(exchange, routingkey, s);
+		System.out.println("RabbitMQSender--->"+"routingkey"+routingkey+"exchange"+exchange+"Send msg = " + s);
 	}
 }
