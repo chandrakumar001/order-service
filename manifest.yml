@@ -1,0 +1,11 @@
+---
+applications:
+ - name: order-service
+   memory: 800M
+   instances: 1
+   path: build/libs/order-service-0.0.1-SNAPSHOT.jar
+   services:
+    - service-registry
+    - rabbit-mq
+   env:
+     SPRING_PROFILE_ACTIVE: cloud
