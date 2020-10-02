@@ -4,7 +4,9 @@ applications:
    memory: 800M
    instances: 1
    random-route: false
-   path: order-service-0.0.1-SNAPSHOT.jar
+   path: ./build/libs/order-service-0.0.1-SNAPSHOT.jar
+   buildpack: liberty-for-java
+   command: java -jar ./build/libs/order-service-0.0.1-SNAPSHOT.jar
    services:
     - service-registry
     - rabbit-mq
